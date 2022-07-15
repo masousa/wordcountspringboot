@@ -11,7 +11,7 @@
 	<groupId>br.com.letscode.samplecode</groupId>
 	<artifactId>br.com.letscode.eighteleven.wordcount</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>sample-spring-boot-application</name>
 	<description>sample project for Spring Boot</description>
