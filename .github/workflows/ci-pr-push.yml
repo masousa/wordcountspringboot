@@ -1,0 +1,32 @@
+name: CI PR PUSH PRD
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          cache: maven
+      - run: mvn test --batch-mode --update-snapshots verify
+      - run: mkdir prd && cp 'target/'*.jar prd
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Package
+          path: prd
+      - name: Login into heroku account
+        env:
+          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+        run: heroku container:login
+      - name: Build and push to heroku container
+        env:
+          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+          HEROKU_APP_NAME: ${{secrests.HEROKU_API_NAME}}
+        run: heroku plugins:install java && heroku create --no-remote && heroku deploy:jar prd/wordcountSpringBoot.jar --app ${{secrests.HEROKU_API_NAME}}
+
+
