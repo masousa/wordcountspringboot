@@ -15,7 +15,7 @@ jobs:
           distribution: 'adopt'
           cache: maven
       - name: Test with maven
-        run: mvn --batch-mode --update-snapshots verify
+        run: mvn --batch-mode --update-snapshots package verify
       - name: Create build path staging
         run: mkdir staging && cp target/*.jar staging
       - name: Upload math result for job
