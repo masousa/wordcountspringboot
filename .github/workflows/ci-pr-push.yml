@@ -27,7 +27,6 @@ jobs:
         env:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
           HEROKU_APP_NAME: ${{secrets.HEROKU_API_NAME}}
-          PORT: 80
         run: heroku plugins:install java && heroku create --no-remote && heroku deploy:jar prd/wordcountSpringBoot.jar --app wordcountspringboot
 
 
