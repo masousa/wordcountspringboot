@@ -1,7 +1,7 @@
 server:
   servlet:
     context-path: /
-  port: 9080
+  port: ${PORT:9080}
   compression:
     mime-types:
       - application/json
