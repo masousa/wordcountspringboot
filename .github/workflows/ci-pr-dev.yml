@@ -14,7 +14,7 @@ jobs:
           distribution: 'adopt'
           cache: maven
       - run: mvn test --batch-mode --update-snapshots verify
-      - run: mkdir staging && cp ${pwd}/target/*.jar staging
+      - run: mkdir staging && cp /home/runner/work/wordcountspringboot/wordcountspringboot/target/wordcountSpringBoot.jar staging
       - uses: actions/upload-artifact@v3
         with:
           name: Package
