@@ -26,7 +26,7 @@ jobs:
       - name: Build and push to heroku container
         env:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
-          HEROKU_APP_NAME: ${{secrests.HEROKU_API_NAME}}
-        run: heroku plugins:install java && heroku create --no-remote && heroku deploy:jar prd/wordcountSpringBoot.jar --app ${{secrests.HEROKU_API_NAME}}
+          HEROKU_APP_NAME: ${{secrets.HEROKU_API_NAME}}
+        run: heroku plugins:install java && heroku create --no-remote && heroku deploy:jar prd/wordcountSpringBoot.jar --app ${{secrets.HEROKU_API_NAME}}
 
 
